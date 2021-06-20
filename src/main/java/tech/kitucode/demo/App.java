@@ -23,6 +23,7 @@ public class App
         countries.put("Tanzania","Dodoma");
         countries.put("Uganda","Kampala");
         countries.put("Somalia","Mogadishu");
+        countries.put("England","London");
 
         System.out.println(countries);
 
@@ -52,8 +53,7 @@ public class App
                             String inputLine;
 
                             while((inputLine=in.readLine())!=null){
-                                out.println(countries.get(inputLine.substring(0,1).toUpperCase() + inputLine.substring(1).toLowerCase()));
-                                System.out.println(countries.get(inputLine.substring(0,1).toUpperCase() + inputLine.substring(1).toLowerCase()));
+                                out.println(countries.getOrDefault(capitalize(inputLine),"not found"));
                             }
 
                         } catch (IOException e) {
@@ -68,5 +68,9 @@ public class App
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static String capitalize(String originalString){
+        return originalString.substring(0,1).toUpperCase() + originalString.substring(1).toLowerCase();
     }
 }
