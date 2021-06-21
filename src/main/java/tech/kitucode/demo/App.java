@@ -17,7 +17,7 @@ public class App
 
         int port = 12000;
 
-        final Map<String, String> countries = new HashMap<String, String>();
+        final Map<String, String> countries = new HashMap<>();
 
         countries.put("Kenya","Nairobi");
         countries.put("Tanzania","Dodoma");
@@ -40,29 +40,29 @@ public class App
 
                 System.out.println("demo|starting a connection to : "+socket.getInetAddress() + " at port : "+socket.getPort());
 
-                Thread thread = new Thread(new Runnable() {
-                    public void run() {
-                        try {
+                // replaced 'new Runnable' with a lambda
+                Thread thread = new Thread(() -> {
+                    try {
 
-                            System.out.println("demo|client connected with port : "+socket.getPort());
+                        System.out.println("demo|client connected with port : "+socket.getPort()+" on thread : "+Thread.currentThread().getName());
 
-                            PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+                        PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
 
-                            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                            String inputLine;
+                        String inputLine;
 
-                            while((inputLine=in.readLine())!=null){
-                                out.println(countries.getOrDefault(capitalize(inputLine),"not found"));
-                            }
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
+                        while((inputLine=in.readLine())!=null){
+                            out.println(countries.getOrDefault(capitalize(inputLine),"not found"));
                         }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 });
 
                 thread.start();
+
             }
 
         } catch (IOException e) {
