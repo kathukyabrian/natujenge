@@ -24,6 +24,7 @@ public class App
         countries.put("Uganda","Kampala");
         countries.put("Somalia","Mogadishu");
         countries.put("England","London");
+        countries.put("Nigeria","Lagos");
 
         System.out.println(countries);
 
@@ -53,6 +54,11 @@ public class App
                         String inputLine;
 
                         while((inputLine=in.readLine())!=null){
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
                             out.println(countries.getOrDefault(capitalize(inputLine),"not found"));
                         }
 
