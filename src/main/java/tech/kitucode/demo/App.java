@@ -1,82 +1,100 @@
 package tech.kitucode.demo;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import tech.kitucode.demo.config.DatasourceConfig;
+import tech.kitucode.demo.config.DatasourceManager;
+import tech.kitucode.demo.config.impl.HikariDataSourceManager;
+import tech.kitucode.demo.core.Processor;
+import tech.kitucode.demo.domain.Request;
+
+import javax.sql.DataSource;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
 
-public class App
-{
+public class App {
 
-    public static void main(String[] args )
-    {
+    private static final Logger logger = LogManager.getLogger(App.class);
 
-        int port = 12000;
+    private static final int port = 12000;
 
-        final Map<String, String> countries = new HashMap<>();
+    private static final ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT,true).configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES,true);
 
-        countries.put("Kenya","Nairobi");
-        countries.put("Tanzania","Dodoma");
-        countries.put("Uganda","Kampala");
-        countries.put("Somalia","Mogadishu");
-        countries.put("England","London");
-        countries.put("Nigeria","Lagos");
+    public static void main(String[] args ) throws IOException {
 
-        System.out.println(countries);
+        logger.debug("Initialized log4j2");
 
-        try {
-            final ServerSocket serverSocket = new ServerSocket(port);
+        logger.debug("Initializing datasource");
 
-            System.out.println("demo|server connected with port : "+serverSocket.getLocalPort());
+        String id = "MAIN";
 
-            System.out.println("demo|waiting for connections:");
+        String driverClassName = "com.mysql.cj.jdbc.Driver";
 
-            while(true){
+        String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/javademo";
 
-                final Socket socket = serverSocket.accept();
+        String username = "root";
 
-                System.out.println("demo|starting a connection to : "+socket.getInetAddress() + " at port : "+socket.getPort());
+        String password = "kitunda2018";
 
-                // replaced 'new Runnable' with a lambda
-                Thread thread = new Thread(() -> {
-                    try {
+        boolean cachePrepStmts = true;
 
-                        System.out.println("demo|client connected with port : "+socket.getPort()+" on thread : "+Thread.currentThread().getName());
+        int prepStmtCacheSize = 250;
 
-                        PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
+        int prepStmtCacheSqlLimit = 2048;
 
-                        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        int minimumIdle = 30;
 
-                        String inputLine;
+        DatasourceConfig dataSourceConfig = new DatasourceConfig(id, driverClassName, jdbcUrl, username, password,
+                cachePrepStmts, prepStmtCacheSize, prepStmtCacheSqlLimit, minimumIdle);
 
-                        while((inputLine=in.readLine())!=null){
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            out.println(countries.getOrDefault(capitalize(inputLine),"not found"));
-                        }
+        DatasourceManager dataSourceManager = new HikariDataSourceManager();
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        DataSource dataSource = dataSourceManager.getDataSource(dataSourceConfig);
+
+        logger.info("system|finished initializing dataSource");
+
+        // socket
+
+        Processor processor = new Processor();
+
+        final ServerSocket serverSocket = new ServerSocket(port);
+
+        logger.info("Waiting for client connections on port : {}",serverSocket.getLocalPort());
+
+
+
+        while (true){
+            final Socket socket = serverSocket.accept();
+
+            Thread thread = new Thread(()->{
+                try{
+                    logger.info("Client connected with port : {}",socket.getPort());
+
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+                    String request;
+
+                    while((request=bufferedReader.readLine())!=null){
+                        Request request1 = objectMapper.readValue(request,Request.class);
+                        logger.debug("About to send : {} to PreProcessor",request1);
+                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request1);
                     }
-                });
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
 
-                thread.start();
+            },"acceptor-thread");
 
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
+            thread.start();
         }
-    }
 
-    public static String capitalize(String originalString){
-        return originalString.substring(0,1).toUpperCase() + originalString.substring(1).toLowerCase();
     }
 }
