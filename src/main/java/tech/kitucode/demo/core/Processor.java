@@ -12,11 +12,11 @@ public class Processor {
 
     private static Logger logger = LogManager.getLogger(Processor.class);
 
-    public  void queue(String className, Request request){
+    public  void queue(String className, String request){
         try {
             Class cls = Class.forName(className);
 
-            Method method = cls.getMethod("process",Request.class);
+            Method method = cls.getMethod("process",String.class);
 
             method.invoke(cls.newInstance(),request);
 

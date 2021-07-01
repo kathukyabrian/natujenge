@@ -10,10 +10,8 @@ import tech.kitucode.demo.config.DatasourceConfig;
 import tech.kitucode.demo.config.DatasourceManager;
 import tech.kitucode.demo.config.impl.HikariDataSourceManager;
 import tech.kitucode.demo.core.Processor;
-import tech.kitucode.demo.domain.Request;
 
 import javax.sql.DataSource;
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -83,9 +81,8 @@ public class App {
                     String request;
 
                     while((request=bufferedReader.readLine())!=null){
-                        Request request1 = objectMapper.readValue(request,Request.class);
-                        logger.debug("About to send : {} to PreProcessor",request1);
-                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request1);
+                        logger.debug("About to send : {} to PreProcessor",request);
+                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request);
                     }
                 }catch (IOException e){
                     e.printStackTrace();

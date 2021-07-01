@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import tech.kitucode.demo.core.Processor;
 import tech.kitucode.demo.domain.Request;
 import tech.kitucode.demo.domain.enumerations.Event;
+import tech.kitucode.demo.utilities.BasicUtils;
 
 public class PreProcessor {
 
@@ -12,17 +13,19 @@ public class PreProcessor {
 
     Processor processor = new Processor();
 
-    public void process(Request request){
+    public void process(String request){
 
         logger.debug("Received a request : {}",request);
-
-        Event event = request.getEvent();
         // check event and route
 
+        String event = BasicUtils.getFirstWord(request);
+
+        logger.debug("Received a {} request",event);
+
         try{
-            if(event.equals(Event.BAL)){
+            if(event.equals(Event.BAL.toString())){
                 processor.queue("tech.kitucode.demo.processors.BalanceProcessor",request);
-            }else if (event.equals(Event.BUY)){
+            }else if (event.equals(Event.BUY.toString())){
                 processor.queue("tech.kitucode.demo.processors.RechargeProcessor",request);
             }
         }catch(Exception e){
