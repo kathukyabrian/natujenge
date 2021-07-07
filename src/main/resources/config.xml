@@ -4,5 +4,17 @@
         <service name="pre">
             <processorClass>tech.kitucode.demo.processors.PreProcessor</processorClass>
         </service>
+
+        <service name="balance">
+            <processorClass>tech.kitucode.demo.processors.BalanceProcessor</processorClass>
+        </service>
+
+        <service name="recharge">
+            <processorClass>tech.kitucode.demo.processors.RechargeProcessor</processorClass>
+        </service>
+
+        <service name="customer">
+            <processorClass>tech.kitucode.demo.processors.CustomerProcessor</processorClass>
+        </service>
     </services>
 </app>

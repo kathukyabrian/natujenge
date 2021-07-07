@@ -1,7 +1,6 @@
 package tech.kitucode.demo;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
@@ -10,6 +9,8 @@ import tech.kitucode.demo.config.DatasourceConfig;
 import tech.kitucode.demo.config.DatasourceManager;
 import tech.kitucode.demo.config.impl.HikariDataSourceManager;
 import tech.kitucode.demo.core.Processor;
+import tech.kitucode.demo.repository.CustomerRepository;
+import tech.kitucode.demo.utilities.XMLUtils;
 
 import javax.sql.DataSource;
 import java.io.BufferedReader;
@@ -17,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Map;
 
 public class App {
 
@@ -59,7 +61,14 @@ public class App {
 
         logger.info("system|finished initializing dataSource");
 
+        logger.info("Initializing the processor configs");
+
+        Map<String, String> processorConfig = XMLUtils.readByTagName("config.xml","service");
+
+        logger.info("Received config : {}",processorConfig.toString());
+
         // socket
+
 
         Processor processor = new Processor();
 
@@ -67,7 +76,7 @@ public class App {
 
         logger.info("Waiting for client connections on port : {}",serverSocket.getLocalPort());
 
-
+        CustomerRepository customerRepository = new CustomerRepository();
 
         while (true){
             final Socket socket = serverSocket.accept();
@@ -80,9 +89,10 @@ public class App {
 
                     String request;
 
+                    logger.debug("About to send request to PreProcessor");
+
                     while((request=bufferedReader.readLine())!=null){
-                        logger.debug("About to send : {} to PreProcessor",request);
-                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request);
+                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request,customerRepository,dataSource,processorConfig);
                     }
                 }catch (IOException e){
                     e.printStackTrace();

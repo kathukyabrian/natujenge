@@ -8,10 +8,19 @@ import tech.kitucode.demo.utilities.BasicUtils;
 import javax.sql.DataSource;
 import java.util.Map;
 
-public class RechargeProcessor {
-    private final Logger logger = LogManager.getLogger(RechargeProcessor.class);
+public class CustomerProcessor {
+
+    private final Logger logger = LogManager.getLogger(CustomerProcessor.class);
 
     public void process(String request, CustomerRepository customerRepository, DataSource dataSource, Map<String, String> processorConfig){
-        logger.debug("Received a recharge request for account number : {} with amount : {}", BasicUtils.getSecondWord(request),BasicUtils.getThirdWord(request));
+
+        String accountNumber = BasicUtils.getSecondWord(request);
+
+        logger.debug("Received request to create customer with account number : {}", accountNumber);
+
+        customerRepository.save(accountNumber,dataSource);
+
+        logger.debug("Saved a new customer");
+
     }
 }

@@ -2,20 +2,20 @@ package tech.kitucode.demo.domain;
 
 import tech.kitucode.demo.domain.enumerations.Event;
 
-public class Request {
+public class Customer {
 
-    private Event event;
+    private Integer id;
 
     private String accountNumber;
 
-    private double amount;
+    private Double tokenAmount;
 
-    public Event getEvent() {
-        return event;
+    public Integer getId() {
+        return id;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getAccountNumber() {
@@ -26,20 +26,20 @@ public class Request {
         this.accountNumber = accountNumber;
     }
 
-    public double getAmount() {
-        return amount;
+    public Double getTokenAmount() {
+        return tokenAmount;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setTokenAmount(Double tokenAmount) {
+        this.tokenAmount = tokenAmount;
     }
 
     @Override
     public String toString() {
-        return "Request{" +
-                "event=" + event +
+        return "Customer{" +
+                "id=" + id +
                 ", accountNumber='" + accountNumber + '\'' +
-                ", amount=" + amount +
+                ", tokenAmount=" + tokenAmount +
                 '}';
     }
 }

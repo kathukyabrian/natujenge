@@ -1,0 +1,4 @@
+2021-07-06 13:09:36.327 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-06 13:09:36.332 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-06 13:09:36.740 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-06 13:09:36.743 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000

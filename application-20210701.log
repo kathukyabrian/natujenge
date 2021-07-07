@@ -201,3 +201,47 @@
 2021-07-01 21:41:31.751 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12000
 2021-07-01 21:41:31.752 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
 2021-07-01 21:41:31.753 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : {}BAL 12000
+2021-07-01 22:23:21.655 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-01 22:23:21.659 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-01 22:23:21.965 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-01 22:23:21.969 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-01 22:23:26.560 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 60984
+2021-07-01 22:23:31.832 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send : BUY 128991001 100 to PreProcessor
+2021-07-01 22:23:31.833 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BUY 128991001 100
+2021-07-01 22:23:31.833 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BUY request
+2021-07-01 22:23:31.834 [acceptor-thread] DEBUG tech.kitucode.demo.processors.RechargeProcessor - Received a recharge request for account number : 128991001 with amount : 100
+2021-07-01 22:52:11.713 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-01 22:52:11.717 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-01 22:52:12.082 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-01 22:52:12.086 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-01 22:52:16.454 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 33476
+2021-07-01 22:52:16.454 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-01 22:52:27.601 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 123456
+2021-07-01 22:52:27.602 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-01 22:55:26.468 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-01 22:55:26.471 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-01 22:55:26.824 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-01 22:55:26.827 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-01 22:55:35.711 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 33576
+2021-07-01 22:55:35.711 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-01 22:55:43.459 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 123456
+2021-07-01 22:55:43.459 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-01 23:04:56.696 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-01 23:04:56.699 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-01 23:04:56.971 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-01 23:04:56.975 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-01 23:04:59.883 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 34598
+2021-07-01 23:04:59.884 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-01 23:05:03.884 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 123456
+2021-07-01 23:05:03.884 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-01 23:06:05.710 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE BRIAN
+2021-07-01 23:06:05.710 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-01 23:07:40.565 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-01 23:07:40.570 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-01 23:07:41.087 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-01 23:07:41.093 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-01 23:07:42.714 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 34698
+2021-07-01 23:07:42.714 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-01 23:07:47.057 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 123456
+2021-07-01 23:07:47.057 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-01 23:07:47.058 [acceptor-thread] DEBUG tech.kitucode.demo.processors.CustomerProcessor - Received request to create customer with account number : 123456
