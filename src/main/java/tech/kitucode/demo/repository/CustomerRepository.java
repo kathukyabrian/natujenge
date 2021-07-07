@@ -5,6 +5,7 @@ import tech.kitucode.demo.domain.Customer;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerRepository {
@@ -19,13 +20,33 @@ public class CustomerRepository {
 
             statement.setDouble(2,0);
 
-            System.out.println(statement.toString());
-
             statement.execute();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
+    }
+
+    public double getBalance(String accountNumber, DataSource dataSource){
+        String query = "SELECT token_amount FROM javademo.customers WHERE account_number = ?;";
+
+        double tokenAmount = 0.0;
+        try(Connection connection = dataSource.getConnection()){
+            PreparedStatement statement = connection.prepareStatement(query);
+
+            statement.setString(1,accountNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()){
+                tokenAmount = resultSet.getDouble(1);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return tokenAmount;
     }
 }

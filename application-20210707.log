@@ -165,3 +165,57 @@
 2021-07-07 21:12:28.754 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
 2021-07-07 21:12:33.537 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 89012
 2021-07-07 21:12:33.537 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-07 21:15:09.475 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:15:09.478 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:15:09.820 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:15:09.820 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:15:09.830 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:15:09.833 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:15:15.725 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 41522
+2021-07-07 21:15:15.725 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-07 21:15:20.251 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : CREATE 12390
+2021-07-07 21:15:20.252 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a CREATE request
+2021-07-07 21:15:20.253 [acceptor-thread] DEBUG tech.kitucode.demo.processors.CustomerProcessor - Received request to create customer with account number : 12390
+2021-07-07 21:15:20.298 [acceptor-thread] DEBUG tech.kitucode.demo.processors.CustomerProcessor - Saved a new customer
+2021-07-07 21:37:19.641 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:37:19.646 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:37:20.409 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:37:20.410 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:37:20.421 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:37:20.430 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:38:05.750 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:38:05.753 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:38:06.054 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:38:06.055 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:38:06.061 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:38:06.062 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:38:15.727 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 42262
+2021-07-07 21:38:15.727 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-07 21:38:25.831 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12390 
+2021-07-07 21:38:25.831 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:38:25.833 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12390 
+2021-07-07 21:38:25.883 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
+2021-07-07 21:39:16.317 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:39:16.321 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:39:17.122 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:39:17.123 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:39:17.136 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:39:17.138 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:39:17.492 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 42280
+2021-07-07 21:39:17.492 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-07 21:39:21.908 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12390 
+2021-07-07 21:39:21.909 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:39:21.910 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12390 
+2021-07-07 21:39:21.960 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
+2021-07-07 21:41:24.241 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:41:24.245 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:41:24.577 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:41:24.581 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:41:24.591 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:41:24.593 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:41:28.593 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 42394
+2021-07-07 21:41:28.593 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-07 21:41:34.161 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12390 
+2021-07-07 21:41:34.161 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:41:34.162 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12390 
+2021-07-07 21:41:34.200 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
