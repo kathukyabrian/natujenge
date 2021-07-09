@@ -23,13 +23,7 @@ public class BalanceProcessor {
 
         logger.debug("Balance : {}",customerRepository.getBalance(accountNumber,dataSource));
 
-        try {
-            PrintWriter out = new PrintWriter(socket.getOutputStream(),true);
-
-            out.println(customerRepository.getBalance(accountNumber,dataSource));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        BasicUtils.writeToSocket(socket,customerRepository.getBalance(accountNumber,dataSource));
 
     }
 }

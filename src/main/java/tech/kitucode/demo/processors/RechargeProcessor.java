@@ -25,13 +25,7 @@ public class RechargeProcessor {
 
         customerRepository.updateBalance(accountNumber,rechargeAmount,dataSource,unitCost);
 
-        try {
-            PrintWriter printWriter = new PrintWriter(socket.getOutputStream(),true);
-
-            printWriter.println("Successfully credited your account with "+rechargeAmount/unitCost + " units");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        BasicUtils.writeToSocket(socket,"Successfully credited your account with "+rechargeAmount/unitCost + " units");
 
     }
 
