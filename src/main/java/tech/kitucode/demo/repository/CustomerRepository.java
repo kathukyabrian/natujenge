@@ -1,6 +1,7 @@
 package tech.kitucode.demo.repository;
 
-import tech.kitucode.demo.domain.Customer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CustomerRepository {
+    private final Logger logger = LogManager.getLogger(CustomerRepository.class);
 
     public void save(String accountNumber, DataSource dataSource){
         String query = "INSERT INTO javademo.customers( account_number, token_amount) VALUES (?, ?);";
@@ -32,6 +34,7 @@ public class CustomerRepository {
         String query = "SELECT token_amount FROM javademo.customers WHERE account_number = ?;";
 
         double tokenAmount = 0.0;
+
         try(Connection connection = dataSource.getConnection()){
             PreparedStatement statement = connection.prepareStatement(query);
 
@@ -39,14 +42,14 @@ public class CustomerRepository {
 
             ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next()){
+            while (resultSet.next()){
                 tokenAmount = resultSet.getDouble(1);
             }
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+        }finally {
+            return tokenAmount;
         }
-
-
-        return tokenAmount;
     }
 }

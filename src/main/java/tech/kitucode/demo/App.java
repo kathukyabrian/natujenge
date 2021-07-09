@@ -18,7 +18,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class App {
 
@@ -67,8 +69,9 @@ public class App {
 
         logger.info("Received config : {}",processorConfig.toString());
 
-        // socket
+        Map<String, Socket> socketMap = new HashMap<>();
 
+        // socket
 
         Processor processor = new Processor();
 
@@ -92,7 +95,7 @@ public class App {
                     logger.debug("About to send request to PreProcessor");
 
                     while((request=bufferedReader.readLine())!=null){
-                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request,customerRepository,dataSource,processorConfig);
+                        processor.queue("tech.kitucode.demo.processors.PreProcessor",request,customerRepository,dataSource,processorConfig,socket);
                     }
                 }catch (IOException e){
                     e.printStackTrace();

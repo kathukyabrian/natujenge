@@ -219,3 +219,35 @@
 2021-07-07 21:41:34.161 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
 2021-07-07 21:41:34.162 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12390 
 2021-07-07 21:41:34.200 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
+2021-07-07 21:42:49.856 [main] DEBUG tech.kitucode.demo.App - Initialized log4j2
+2021-07-07 21:42:49.859 [main] DEBUG tech.kitucode.demo.App - Initializing datasource
+2021-07-07 21:42:50.128 [main] INFO  tech.kitucode.demo.App - system|finished initializing dataSource
+2021-07-07 21:42:50.128 [main] INFO  tech.kitucode.demo.App - Initializing the processor configs
+2021-07-07 21:42:50.134 [main] INFO  tech.kitucode.demo.App - Received config : {PRE=tech.kitucode.demo.processors.PreProcessor, CUSTOMER=tech.kitucode.demo.processors.CustomerProcessor, BALANCE=tech.kitucode.demo.processors.BalanceProcessor, RECHARGE=tech.kitucode.demo.processors.RechargeProcessor}
+2021-07-07 21:42:50.135 [main] INFO  tech.kitucode.demo.App - Waiting for client connections on port : 12000
+2021-07-07 21:43:04.708 [acceptor-thread] INFO  tech.kitucode.demo.App - Client connected with port : 42472
+2021-07-07 21:43:04.710 [acceptor-thread] DEBUG tech.kitucode.demo.App - About to send request to PreProcessor
+2021-07-07 21:43:07.893 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12390 
+2021-07-07 21:43:07.894 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:43:07.895 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12390 
+2021-07-07 21:43:07.952 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
+2021-07-07 21:43:44.304 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 23290
+2021-07-07 21:43:44.305 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:43:44.305 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 23290
+2021-07-07 21:43:44.307 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0
+2021-07-07 21:45:02.329 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12345
+2021-07-07 21:45:02.330 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-07 21:45:02.330 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12345
+2021-07-07 21:45:02.332 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 10.0
+2021-07-08 14:22:22.633 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12345
+2021-07-08 14:22:22.634 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-08 14:22:22.634 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12345
+2021-07-08 14:22:22.667 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 10.0
+2021-07-08 14:22:38.629 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12345
+2021-07-08 14:22:38.630 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-08 14:22:38.630 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12345
+2021-07-08 14:22:38.631 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 10.0
+2021-07-08 14:22:52.285 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a request : BAL 12901
+2021-07-08 14:22:52.285 [acceptor-thread] DEBUG tech.kitucode.demo.processors.PreProcessor - Received a BAL request
+2021-07-08 14:22:52.286 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Received a balance check request : BAL 12901
+2021-07-08 14:22:52.287 [acceptor-thread] DEBUG tech.kitucode.demo.processors.BalanceProcessor - Balance : 0.0

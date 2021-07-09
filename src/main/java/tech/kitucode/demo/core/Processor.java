@@ -8,19 +8,20 @@ import tech.kitucode.demo.repository.CustomerRepository;
 import javax.sql.DataSource;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.Socket;
 import java.util.Map;
 
 public class Processor {
 
     private static Logger logger = LogManager.getLogger(Processor.class);
 
-    public  void queue(String className, String request, CustomerRepository customerRepository, DataSource dataSource, Map<String,String> processorConfig){
+    public  void queue(String className, String request, CustomerRepository customerRepository, DataSource dataSource, Map<String,String> processorConfig, Socket socket){
         try {
             Class cls = Class.forName(className);
 
-            Method method = cls.getMethod("process",String.class, CustomerRepository.class, DataSource.class, Map.class);
+            Method method = cls.getMethod("process",String.class, CustomerRepository.class, DataSource.class, Map.class, Socket.class);
 
-            method.invoke(cls.newInstance(),request,customerRepository,dataSource, processorConfig);
+            method.invoke(cls.newInstance(),request,customerRepository,dataSource, processorConfig, socket);
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

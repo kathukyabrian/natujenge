@@ -8,6 +8,7 @@ import tech.kitucode.demo.repository.CustomerRepository;
 import tech.kitucode.demo.utilities.BasicUtils;
 
 import javax.sql.DataSource;
+import java.net.Socket;
 import java.util.Map;
 
 
@@ -17,7 +18,7 @@ public class PreProcessor {
 
     Processor processor = new Processor();
 
-    public void process(String request, CustomerRepository customerRepository, DataSource dataSource, Map<String, String> processorConfig){
+    public void process(String request, CustomerRepository customerRepository, DataSource dataSource, Map<String, String> processorConfig, Socket socket){
 
         logger.debug("Received a request : {}",request);
         // check event and route
@@ -32,11 +33,11 @@ public class PreProcessor {
 
         try{
             if(event.equals(Event.BAL.toString())){
-                processor.queue(processorConfig.get("BALANCE"),request,customerRepository,dataSource,processorConfig);
+                processor.queue(processorConfig.get("BALANCE"),request,customerRepository,dataSource,processorConfig,socket);
             }else if (event.equals(Event.BUY.toString())){
-                processor.queue(processorConfig.get("RECHARGE"),request,customerRepository,dataSource,processorConfig);
+                processor.queue(processorConfig.get("RECHARGE"),request,customerRepository,dataSource,processorConfig,socket);
             }else if(event.equals(Event.CREATE.toString())){
-                processor.queue(processorConfig.get("CUSTOMER"),request,customerRepository,dataSource,processorConfig);
+                processor.queue(processorConfig.get("CUSTOMER"),request,customerRepository,dataSource,processorConfig,socket);
             }else{
                 logger.debug("Received an invalid request");
             }

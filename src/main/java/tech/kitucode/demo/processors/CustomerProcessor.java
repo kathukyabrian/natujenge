@@ -6,13 +6,14 @@ import tech.kitucode.demo.repository.CustomerRepository;
 import tech.kitucode.demo.utilities.BasicUtils;
 
 import javax.sql.DataSource;
+import java.net.Socket;
 import java.util.Map;
 
 public class CustomerProcessor {
 
     private final Logger logger = LogManager.getLogger(CustomerProcessor.class);
 
-    public void process(String request, CustomerRepository customerRepository, DataSource dataSource, Map<String, String> processorConfig){
+    public void process(String request, CustomerRepository customerRepository, DataSource dataSource, Map<String, String> processorConfig, Socket socket){
 
         String accountNumber = BasicUtils.getSecondWord(request);
 
