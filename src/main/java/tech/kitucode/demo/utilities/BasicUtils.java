@@ -45,10 +45,5 @@ public class BasicUtils {
 
         return thirdWord;
     }
-
-    public static void main(String[] args) {
-        System.out.println(getSecondWord("BUY 12345 300"));
-    }
-
-
+    
 }
