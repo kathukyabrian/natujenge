@@ -66,8 +66,6 @@ public class CustomerRepository {
 
             preparedStatement.setString(2,accountNumber);
 
-            System.out.println(preparedStatement.toString());
-
             preparedStatement.execute();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
