@@ -52,4 +52,25 @@ public class CustomerRepository {
             return tokenAmount;
         }
     }
+
+    public void updateBalance(String accountNumber, double amount, DataSource dataSource, double unitCost){
+
+        String query = "UPDATE javademo.customers set token_amount = ? where account_number = ?;";
+
+        double currentBalance = getBalance(accountNumber, dataSource);
+
+        try(Connection connection = dataSource.getConnection()){
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setDouble(1, currentBalance + amount/unitCost);
+
+            preparedStatement.setString(2,accountNumber);
+
+            System.out.println(preparedStatement.toString());
+
+            preparedStatement.execute();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

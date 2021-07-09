@@ -31,29 +31,23 @@ public class BasicUtils {
         // check the occurence of first space
         int firstSpacePosition = phrase.indexOf(" ");
 
-        String secondPart = phrase.substring(firstSpacePosition+1);
+        int secondSpacePosition = phrase.lastIndexOf(" ");
 
-        int secondSpacePosition = secondPart.indexOf(" ");
+        String secondWord = phrase.substring(firstSpacePosition+1, secondSpacePosition);
 
-        String secondWord = secondPart.substring(secondSpacePosition+1);
-
-        return secondWord.toUpperCase();
+        return secondWord;
     }
 
     public static String getThirdWord(String phrase){
-        int firstSpacePosition = phrase.indexOf(" ");
+        int lastSpacePosition = phrase.lastIndexOf(" ");
 
-        String secondPart = phrase.substring(firstSpacePosition+1);
+        String thirdWord = phrase.substring(lastSpacePosition+1);
 
-        int secondSpacePosition = secondPart.indexOf(" ");
+        return thirdWord;
+    }
 
-        String thirdPart = secondPart.substring(secondSpacePosition+1);
-
-        int thirdSpacePosition = thirdPart.indexOf(" ");
-
-        String thirdWord =  thirdPart.substring(thirdSpacePosition+1);
-
-        return thirdWord.toUpperCase();
+    public static void main(String[] args) {
+        System.out.println(getSecondWord("BUY 12345 300"));
     }
 
 
